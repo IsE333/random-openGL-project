@@ -2,6 +2,7 @@
 #include <iostream>
 #include "program.h"
 #include "objects.h"
+#include "object.h"
 // #include "program.cpp"
 // #include "objects.cpp"
 //   #pragma comment(lib, "opengl32")
@@ -98,9 +99,9 @@ int main(void)
     Program prg = Program(window, &View);
 
     static const GLfloat g_vertex_buffer_data[] = {
-        -1.0f,
-        -1.0f,
-        0.0f,
+        -15.0f,
+        -2.0f,
+        9.0f,
         1.0f,
         -1.0f,
         0.0f,
@@ -110,10 +111,12 @@ int main(void)
     };
 
     GLuint vertexbuffer;
-
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 108, prg.objs->cubeVBD, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 108, prg.objs->cube->VBD, GL_STATIC_DRAW);
+
+    // GLuint ucgen0 = prg.objs->create(0);
+    Object ucgen1 = Object(0, prg.objs->allObjs[0]);
 
     ////////
     static const GLfloat g_vertex_buffer_dataT0[] = {
@@ -179,6 +182,9 @@ int main(void)
 
         glDisableVertexAttribArray(0);
 
+        // prg.objs->draw(ucgen0);
+        ucgen1.draw();
+
         /// denemeöwe
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, vertexbufferT0);
@@ -202,7 +208,7 @@ int main(void)
         // prg.draw();
         MVP = Projection * View * Model;
         printf("a");
-        glfwSwapInterval(0);
+        // glfwSwapInterval(2);
 
     } // Check if the ESC key was pressed or the window was closed
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&

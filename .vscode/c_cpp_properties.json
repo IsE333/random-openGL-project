@@ -7,7 +7,6 @@
                 "${workspaceFolder}/external/glfw-3.3.8/include",
                 "${workspaceFolder}/external/glew-2.1.0/include",
                 "${workspaceFolder}/external/glm-0.9.9.8"
-                //"${workspaceFolder}/external/glad/include"
             ],
             "defines": [
                 "_DEBUG",
@@ -18,7 +17,8 @@
             "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

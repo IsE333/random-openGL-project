@@ -1,9 +1,11 @@
 #define GLEW_STATIC
 #include <iostream>
-// #include "program.h"
-#include "program.cpp"
-// #pragma comment(lib, "opengl32")
-// #pragma comment(lib, "glu32")
+#include "program.h"
+#include "objects.h"
+// #include "program.cpp"
+// #include "objects.cpp"
+//   #pragma comment(lib, "opengl32")
+//   #pragma comment(lib, "glu32")
 
 #include <gl/glew.h>
 #include <gl/gl.h>
@@ -11,6 +13,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 GLFWwindow *window;
 
@@ -39,7 +42,7 @@ int main(void)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL
 
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow(1600, 900, "test", NULL, NULL);
+    window = glfwCreateWindow(1600, 700, "test", NULL, NULL);
     if (window == NULL)
     {
         fprintf(stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n");
@@ -70,7 +73,9 @@ int main(void)
     glBindVertexArray(VertexArrayID);
 
     // Create and compile our GLSL program from the shaders
-    GLuint programID = LoadShaders("SimpleTransform.vertexshader", "SingleColor.fragmentshader");
+    GLuint programID = LoadShaders("shaders/SimpleTransform.vertexshader", "shaders/SingleColor.fragmentshader");
+    // int lightColorLoc = glGetUniformLocation(programID, "lightColor");
+    // int lightPosLoc = glGetUniformLocation(programID, "lightPos");
 
     // Get a handle for our "MVP" uniform
     GLuint MatrixID = glGetUniformLocation(programID, "MVP");
@@ -90,7 +95,7 @@ int main(void)
     glm::mat4 Model = glm::mat4(1.0f);
     // Our ModelViewProjection : multiplication of our 3 matrices
     glm::mat4 MVP = Projection * View * Model; // Remember, matrix multiplication is the other way around
-    Program prg = Program(window, &MVP);
+    Program prg = Program(window, &View);
 
     static const GLfloat g_vertex_buffer_data[] = {
         -1.0f,
@@ -108,7 +113,7 @@ int main(void)
 
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 108, prg.objs->cubeVBD, GL_STATIC_DRAW);
 
     ////////
     static const GLfloat g_vertex_buffer_dataT0[] = {
@@ -117,8 +122,8 @@ int main(void)
         0.0f,
         0.5f,
         -0.5f,
-        0.0f,
-        0.0f,
+        1.0f,
+        -1.0f,
         1.5f,
         0.0f,
     };
@@ -135,6 +140,23 @@ int main(void)
 
         // Use our shader
         glUseProgram(programID);
+        // Uniform değişkenlerine değer atama
+        // glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
+        // glUniform3f(lightPosLoc, 0.0f, 0.0f, 2.0f);
+
+        // glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
+        // glUniform3f(lightColorLoc, lightColor.x, lightColor.y, lightColor.z);
+        /*
+                glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
+                GLint objectColorLoc = glGetUniformLocation(programID, "objectColor");
+                glUniform3f(objectColorLoc, objectColor.x, objectColor.y, objectColor.z);
+        */
+
+        // Matrisleri shadera göndermek için uniform locationlarını alın
+        // GLint modelLoc = glGetUniformLocation(programID, "model");
+        // GLint viewLoc = glGetUniformLocation(programID, "view");
+        // GLint projLoc = glGetUniformLocation(programID, "projection");
+        // glUniform3f(glGetUniformLocation(programID, "objectColor"), 1.0f, 0.5f, 0.31f);
 
         // Send our transformation to the currently bound shader,
         // in the "MVP" uniform
@@ -177,7 +199,10 @@ int main(void)
         glfwSwapBuffers(window);
         glfwPollEvents();
         prg.loop();
+        // prg.draw();
+        MVP = Projection * View * Model;
         printf("a");
+        glfwSwapInterval(0);
 
     } // Check if the ESC key was pressed or the window was closed
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&

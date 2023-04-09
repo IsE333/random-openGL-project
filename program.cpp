@@ -1,5 +1,6 @@
-#include <iostream>
+
 #include "program.h"
+#include <iostream>
 
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
@@ -13,12 +14,17 @@
 
 using namespace std;
 
-Program::Program(GLFWwindow *win, glm::mat4 *MVP)
+Program::Program(GLFWwindow *win, glm::mat4 *View)
 {
     window = win;
-    mvp = MVP;
+    view = View;
     i = 0;
     prevFrameTime = 0;
+    objs = new Objects();
+}
+Program::~Program()
+{
+    delete objs;
 }
 
 float totalCountedTime = 0;
@@ -28,10 +34,11 @@ glm::vec3 cameraPos = glm::vec3(2, 2, 2);
 glm::vec3 cameraFront = glm::vec3(1, 0, 0);
 glm::vec3 cameraUp = glm::vec3(0, 1, 0);
 // Model matrix : an identity matrix (model will be at the origin)
-glm::mat4 Model = glm::mat4(1.0f);
-glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
-float yaw;
-float pitch;
+// glm::mat4 Model = glm::mat4(1.0f);
+// glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+float yaw0;
+float pitch0;
+float movementSpeed = 8.0f;
 
 void Program::loop()
 {
@@ -60,20 +67,20 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos) // chatgpt yaz
     yoffset *= sensitivity;
 
     // yaw and pitch are global variables
-    yaw += xoffset;
-    pitch += yoffset;
+    yaw0 += xoffset;
+    pitch0 += yoffset;
 
     // make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
+    if (pitch0 > 89.0f)
+        pitch0 = 89.0f;
+    if (pitch0 < -89.0f)
+        pitch0 = -89.0f;
 
     // cameraFront, cameraUp and cameraRight are global variables
     glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.x = cos(glm::radians(yaw0)) * cos(glm::radians(pitch0));
+    front.y = sin(glm::radians(pitch0));
+    front.z = sin(glm::radians(yaw0)) * cos(glm::radians(pitch0));
     cameraFront = glm::normalize(front);
 }
 
@@ -82,26 +89,27 @@ void Program::cameraControl()
     // glfwPollEvents();
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
-        cameraPos += cameraFront * (float)(time - prevFrameTime);
+        cameraPos += cameraFront * (float)(time - prevFrameTime) * movementSpeed;
         cout << "cameraPos: " << cameraPos.x << " " << cameraPos.y << " " << cameraPos.z << endl;
         cout << "cameraFront: " << cameraFront.x << " " << cameraFront.y << " " << cameraFront.z << endl;
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraFront * (float)(time - prevFrameTime);
+        cameraPos -= cameraFront * (float)(time - prevFrameTime) * movementSpeed;
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * (float)(time - prevFrameTime);
+        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * (float)(time - prevFrameTime) * movementSpeed;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * (float)(time - prevFrameTime);
+        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * (float)(time - prevFrameTime) * movementSpeed;
 
     glfwSetCursorPosCallback(window, mouse_callback);
 
-    glm::mat4 View = glm::lookAt(
+    *view = glm::lookAt(
         cameraPos,               // Camera is at (4,3,3), in World Space
         cameraPos + cameraFront, // and looks at the origin
         cameraUp                 // Head is up (set to 0,-1,0 to look upside-down)
     );
     // Our ModelViewProjection : multiplication of our 3 matrices
-    *mvp = Projection * View * Model; // Remember, matrix multiplication is the other way around
+    //*mvp = Projection * View * Model; // Remember, matrix multiplication is the other way around
+    // cout << "" << View[3][0] << " " << View[3][1] << " " << View[3][2] << " " << endl;
 }
 
 void Program::printTime()

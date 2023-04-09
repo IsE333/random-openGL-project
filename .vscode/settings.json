@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "*.vertexshader": "glsl",
+        "*.fragmentshader": "glsl",
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }

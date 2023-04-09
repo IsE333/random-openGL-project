@@ -1,0 +1,3 @@
+D:/D/kod/c++/randombsg/build/CMakeFiles/randombs.dir
+D:/D/kod/c++/randombsg/build/CMakeFiles/edit_cache.dir
+D:/D/kod/c++/randombsg/build/CMakeFiles/rebuild_cache.dir

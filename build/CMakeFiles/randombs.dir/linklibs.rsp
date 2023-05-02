@@ -1,1 +1,0 @@
-  -L"D:/D/kod/c++/randombsg/external/glfw-3.3.8/lib-mingw-w64"  -L"D:/D/kod/c++/randombsg/external/glew-2.1.0/lib/Release/x64"  -lglfw3 -lglew32s -lopengl32 -lgdi32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

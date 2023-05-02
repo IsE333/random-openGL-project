@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 project(randombs)
 set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_COMPILER "g++")
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -static -lpthread")
+
 
 # Add directories for header files
 include_directories(
@@ -16,6 +18,7 @@ include_directories(
 link_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/external/glfw-3.3.8/lib-mingw-w64
     ${CMAKE_CURRENT_SOURCE_DIR}/external/glew-2.1.0/lib/Release/x64
+    #${CMAKE_CURRENT_SOURCE_DIR}/lib
     #${CMAKE_CURRENT_SOURCE_DIR}/shaders
 )
 
@@ -41,3 +44,5 @@ target_link_libraries(
 )
 
 set_property(TARGET randombs PROPERTY CXX_STANDARD 11)
+
+

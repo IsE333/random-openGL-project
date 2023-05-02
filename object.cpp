@@ -9,24 +9,25 @@
 #include "object.h"
 #include "objectdata.h"
 #include "objects.h"
+#include "program.h"
 
 using namespace glm;
 
-Object::Object(int index, ObjectData d)
+Object::Object(int index, Program *p)
 {
+    program = p;
     this->objIndex = index;
-    data = d;
+    data = (*program).objs->allObjs[index];
 
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
     glBufferData(GL_ARRAY_BUFFER, data.VBDSize * sizeof(GLfloat), data.VBD, GL_STATIC_DRAW);
 }
-Object::~Object()
-{
-}
 
 void Object::draw()
 {
+    MVP = *program->projection * *program->view * Model;
+
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
     glVertexAttribPointer(
@@ -39,6 +40,6 @@ void Object::draw()
     );
 
     // Draw the triangle !
-    glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+    glDrawArrays(GL_TRIANGLES, 0, data.VBDSize / 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
     glDisableVertexAttribArray(0);
 }

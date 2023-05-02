@@ -14,13 +14,18 @@
 
 using namespace std;
 
-Program::Program(GLFWwindow *win, glm::mat4 *View)
+Program::Program(GLFWwindow *win, glm::mat4 *View, glm::mat4 *Projection)
 {
     window = win;
     view = View;
+    projection = Projection;
     i = 0;
     prevFrameTime = 0;
     objs = new Objects();
+}
+Program::Program()
+{
+    cout << "Program screwed" << endl;
 }
 Program::~Program()
 {

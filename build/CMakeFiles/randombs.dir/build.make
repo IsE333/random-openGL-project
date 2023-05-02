@@ -83,11 +83,41 @@ CMakeFiles/randombs.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/randombs.dir/main.cpp.s"
 	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\D\kod\c++\randombsg\main.cpp -o CMakeFiles\randombs.dir\main.cpp.s
 
+CMakeFiles/randombs.dir/object.cpp.obj: CMakeFiles/randombs.dir/flags.make
+CMakeFiles/randombs.dir/object.cpp.obj: CMakeFiles/randombs.dir/includes_CXX.rsp
+CMakeFiles/randombs.dir/object.cpp.obj: D:/D/kod/c++/randombsg/object.cpp
+CMakeFiles/randombs.dir/object.cpp.obj: CMakeFiles/randombs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/randombs.dir/object.cpp.obj"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/randombs.dir/object.cpp.obj -MF CMakeFiles\randombs.dir\object.cpp.obj.d -o CMakeFiles\randombs.dir\object.cpp.obj -c D:\D\kod\c++\randombsg\object.cpp
+
+CMakeFiles/randombs.dir/object.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/randombs.dir/object.cpp.i"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\D\kod\c++\randombsg\object.cpp > CMakeFiles\randombs.dir\object.cpp.i
+
+CMakeFiles/randombs.dir/object.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/randombs.dir/object.cpp.s"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\D\kod\c++\randombsg\object.cpp -o CMakeFiles\randombs.dir\object.cpp.s
+
+CMakeFiles/randombs.dir/objectdata.cpp.obj: CMakeFiles/randombs.dir/flags.make
+CMakeFiles/randombs.dir/objectdata.cpp.obj: CMakeFiles/randombs.dir/includes_CXX.rsp
+CMakeFiles/randombs.dir/objectdata.cpp.obj: D:/D/kod/c++/randombsg/objectdata.cpp
+CMakeFiles/randombs.dir/objectdata.cpp.obj: CMakeFiles/randombs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/randombs.dir/objectdata.cpp.obj"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/randombs.dir/objectdata.cpp.obj -MF CMakeFiles\randombs.dir\objectdata.cpp.obj.d -o CMakeFiles\randombs.dir\objectdata.cpp.obj -c D:\D\kod\c++\randombsg\objectdata.cpp
+
+CMakeFiles/randombs.dir/objectdata.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/randombs.dir/objectdata.cpp.i"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\D\kod\c++\randombsg\objectdata.cpp > CMakeFiles\randombs.dir\objectdata.cpp.i
+
+CMakeFiles/randombs.dir/objectdata.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/randombs.dir/objectdata.cpp.s"
+	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\D\kod\c++\randombsg\objectdata.cpp -o CMakeFiles\randombs.dir\objectdata.cpp.s
+
 CMakeFiles/randombs.dir/objects.cpp.obj: CMakeFiles/randombs.dir/flags.make
 CMakeFiles/randombs.dir/objects.cpp.obj: CMakeFiles/randombs.dir/includes_CXX.rsp
 CMakeFiles/randombs.dir/objects.cpp.obj: D:/D/kod/c++/randombsg/objects.cpp
 CMakeFiles/randombs.dir/objects.cpp.obj: CMakeFiles/randombs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/randombs.dir/objects.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/randombs.dir/objects.cpp.obj"
 	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/randombs.dir/objects.cpp.obj -MF CMakeFiles\randombs.dir\objects.cpp.obj.d -o CMakeFiles\randombs.dir\objects.cpp.obj -c D:\D\kod\c++\randombsg\objects.cpp
 
 CMakeFiles/randombs.dir/objects.cpp.i: cmake_force
@@ -102,7 +132,7 @@ CMakeFiles/randombs.dir/program.cpp.obj: CMakeFiles/randombs.dir/flags.make
 CMakeFiles/randombs.dir/program.cpp.obj: CMakeFiles/randombs.dir/includes_CXX.rsp
 CMakeFiles/randombs.dir/program.cpp.obj: D:/D/kod/c++/randombsg/program.cpp
 CMakeFiles/randombs.dir/program.cpp.obj: CMakeFiles/randombs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/randombs.dir/program.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/randombs.dir/program.cpp.obj"
 	g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/randombs.dir/program.cpp.obj -MF CMakeFiles\randombs.dir\program.cpp.obj.d -o CMakeFiles\randombs.dir\program.cpp.obj -c D:\D\kod\c++\randombsg\program.cpp
 
 CMakeFiles/randombs.dir/program.cpp.i: cmake_force
@@ -116,6 +146,8 @@ CMakeFiles/randombs.dir/program.cpp.s: cmake_force
 # Object files for target randombs
 randombs_OBJECTS = \
 "CMakeFiles/randombs.dir/main.cpp.obj" \
+"CMakeFiles/randombs.dir/object.cpp.obj" \
+"CMakeFiles/randombs.dir/objectdata.cpp.obj" \
 "CMakeFiles/randombs.dir/objects.cpp.obj" \
 "CMakeFiles/randombs.dir/program.cpp.obj"
 
@@ -123,13 +155,15 @@ randombs_OBJECTS = \
 randombs_EXTERNAL_OBJECTS =
 
 randombs.exe: CMakeFiles/randombs.dir/main.cpp.obj
+randombs.exe: CMakeFiles/randombs.dir/object.cpp.obj
+randombs.exe: CMakeFiles/randombs.dir/objectdata.cpp.obj
 randombs.exe: CMakeFiles/randombs.dir/objects.cpp.obj
 randombs.exe: CMakeFiles/randombs.dir/program.cpp.obj
 randombs.exe: CMakeFiles/randombs.dir/build.make
 randombs.exe: CMakeFiles/randombs.dir/linklibs.rsp
 randombs.exe: CMakeFiles/randombs.dir/objects1.rsp
 randombs.exe: CMakeFiles/randombs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable randombs.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\D\kod\c++\randombsg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable randombs.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\randombs.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

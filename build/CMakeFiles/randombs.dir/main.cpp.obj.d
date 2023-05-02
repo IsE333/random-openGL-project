@@ -276,7 +276,8 @@ CMakeFiles/randombs.dir/main.cpp.obj: D:\D\kod\c++\randombsg\main.cpp \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/detail/type_half.inl \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/integer.hpp \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/detail/func_integer.inl \
- D:\D\kod\c++\randombsg\objects.h C:/msys64/mingw64/include/gl/gl.h \
+ D:\D\kod\c++\randombsg\objects.h D:\D\kod\c++\randombsg\objectdata.h \
+ D:\D\kod\c++\randombsg\object.h C:/msys64/mingw64/include/gl/gl.h \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/gtc/type_ptr.hpp \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/gtc/quaternion.hpp \
  D:/D/kod/c++/randombsg/external/glm-0.9.9.8/glm/gtc/constants.hpp \

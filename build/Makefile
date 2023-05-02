@@ -152,6 +152,54 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+object.obj: object.cpp.obj
+.PHONY : object.obj
+
+# target to build an object file
+object.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/object.cpp.obj
+.PHONY : object.cpp.obj
+
+object.i: object.cpp.i
+.PHONY : object.i
+
+# target to preprocess a source file
+object.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/object.cpp.i
+.PHONY : object.cpp.i
+
+object.s: object.cpp.s
+.PHONY : object.s
+
+# target to generate assembly for a file
+object.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/object.cpp.s
+.PHONY : object.cpp.s
+
+objectdata.obj: objectdata.cpp.obj
+.PHONY : objectdata.obj
+
+# target to build an object file
+objectdata.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/objectdata.cpp.obj
+.PHONY : objectdata.cpp.obj
+
+objectdata.i: objectdata.cpp.i
+.PHONY : objectdata.i
+
+# target to preprocess a source file
+objectdata.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/objectdata.cpp.i
+.PHONY : objectdata.cpp.i
+
+objectdata.s: objectdata.cpp.s
+.PHONY : objectdata.s
+
+# target to generate assembly for a file
+objectdata.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\randombs.dir\build.make CMakeFiles/randombs.dir/objectdata.cpp.s
+.PHONY : objectdata.cpp.s
+
 objects.obj: objects.cpp.obj
 .PHONY : objects.obj
 
@@ -212,6 +260,12 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... object.obj
+	@echo ... object.i
+	@echo ... object.s
+	@echo ... objectdata.obj
+	@echo ... objectdata.i
+	@echo ... objectdata.s
 	@echo ... objects.obj
 	@echo ... objects.i
 	@echo ... objects.s

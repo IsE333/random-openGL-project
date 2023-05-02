@@ -67,7 +67,7 @@ int main(void)
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
     // Dark blue background
-    glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.2f, 0.0f);
 
     GLuint VertexArrayID;
     glGenVertexArrays(1, &VertexArrayID);
@@ -94,47 +94,17 @@ int main(void)
     );
     // Model matrix : an identity matrix (model will be at the origin)
     glm::mat4 Model = glm::mat4(1.0f);
+    Model = glm::scale(Model, glm::vec3(2.0f, 0.5f, 0.5f));
+    Model = glm::rotate(Model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
     // Our ModelViewProjection : multiplication of our 3 matrices
     glm::mat4 MVP = Projection * View * Model; // Remember, matrix multiplication is the other way around
-    Program prg = Program(window, &View);
-
-    static const GLfloat g_vertex_buffer_data[] = {
-        -15.0f,
-        -2.0f,
-        9.0f,
-        1.0f,
-        -1.0f,
-        0.0f,
-        0.0f,
-        1.0f,
-        0.0f,
-    };
+    Program prg = Program(window, &View, &Projection);
 
     GLuint vertexbuffer;
-    glGenBuffers(1, &vertexbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 108, prg.objs->cube->VBD, GL_STATIC_DRAW);
 
     // GLuint ucgen0 = prg.objs->create(0);
-    Object ucgen1 = Object(0, prg.objs->allObjs[0]);
-
-    ////////
-    static const GLfloat g_vertex_buffer_dataT0[] = {
-        1.0f,
-        1.0f,
-        0.0f,
-        0.5f,
-        -0.5f,
-        1.0f,
-        -1.0f,
-        1.5f,
-        0.0f,
-    };
-    GLuint vertexbufferT0;
-    glGenBuffers(1, &vertexbufferT0);
-    glBindBuffer(GL_ARRAY_BUFFER, vertexbufferT0);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_dataT0), g_vertex_buffer_dataT0, GL_STATIC_DRAW);
-    /////////////////
+    Object ucgen1 = Object(0, &prg);
+    Object kup = Object(1, &prg);
 
     do
     {
@@ -143,70 +113,18 @@ int main(void)
 
         // Use our shader
         glUseProgram(programID);
-        // Uniform değişkenlerine değer atama
-        // glUniform3f(lightColorLoc, 1.0f, 1.0f, 1.0f);
-        // glUniform3f(lightPosLoc, 0.0f, 0.0f, 2.0f);
 
-        // glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z);
-        // glUniform3f(lightColorLoc, lightColor.x, lightColor.y, lightColor.z);
-        /*
-                glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
-                GLint objectColorLoc = glGetUniformLocation(programID, "objectColor");
-                glUniform3f(objectColorLoc, objectColor.x, objectColor.y, objectColor.z);
-        */
-
-        // Matrisleri shadera göndermek için uniform locationlarını alın
-        // GLint modelLoc = glGetUniformLocation(programID, "model");
-        // GLint viewLoc = glGetUniformLocation(programID, "view");
-        // GLint projLoc = glGetUniformLocation(programID, "projection");
-        // glUniform3f(glGetUniformLocation(programID, "objectColor"), 1.0f, 0.5f, 0.31f);
-
-        // Send our transformation to the currently bound shader,
-        // in the "MVP" uniform
         glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
-        // 1rst attribute buffer : vertices
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-        glVertexAttribPointer(
-            0,        // attribute. No particular reason for 0, but must match the layout in the shader.
-            3,        // size
-            GL_FLOAT, // type
-            GL_FALSE, // normalized?
-            0,        // stride
-            (void *)0 // array buffer offset
-        );
-
-        // Draw the triangle !
-        glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
-
-        glDisableVertexAttribArray(0);
-
-        // prg.objs->draw(ucgen0);
         ucgen1.draw();
-
-        /// denemeöwe
-        glEnableVertexAttribArray(0);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexbufferT0);
-        glVertexAttribPointer(
-            0,        // attribute. No particular reason for 0, but must match the layout in the shader.
-            3,        // size
-            GL_FLOAT, // type
-            GL_FALSE, // normalized?
-            0,        // stride
-            (void *)0 // array buffer offset
-        );
-        // Draw the triangle !
-        glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
-        glDisableVertexAttribArray(0);
-        //////
+        // kup.draw();
 
         // Swap buffers
         glfwSwapBuffers(window);
         glfwPollEvents();
         prg.loop();
         // prg.draw();
-        MVP = Projection * View * Model;
+        // MVP = Projection * View * Model;
         printf("a");
         // glfwSwapInterval(2);
 

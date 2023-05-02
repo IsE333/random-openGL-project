@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/D/kod/c++/randombsg/main.cpp" "CMakeFiles/randombs.dir/main.cpp.obj" "gcc" "CMakeFiles/randombs.dir/main.cpp.obj.d"
+  "D:/D/kod/c++/randombsg/object.cpp" "CMakeFiles/randombs.dir/object.cpp.obj" "gcc" "CMakeFiles/randombs.dir/object.cpp.obj.d"
+  "D:/D/kod/c++/randombsg/objectdata.cpp" "CMakeFiles/randombs.dir/objectdata.cpp.obj" "gcc" "CMakeFiles/randombs.dir/objectdata.cpp.obj.d"
   "D:/D/kod/c++/randombsg/objects.cpp" "CMakeFiles/randombs.dir/objects.cpp.obj" "gcc" "CMakeFiles/randombs.dir/objects.cpp.obj.d"
   "D:/D/kod/c++/randombsg/program.cpp" "CMakeFiles/randombs.dir/program.cpp.obj" "gcc" "CMakeFiles/randombs.dir/program.cpp.obj.d"
   )

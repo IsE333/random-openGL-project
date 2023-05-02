@@ -12,13 +12,16 @@ private:
     double time;
     double prevFrameTime;
     GLFWwindow *window;
-    glm::mat4 *view;
 
 public:
-    Program(GLFWwindow *window, glm::mat4 *View);
+    Objects *objs;
+    glm::mat4 *view;
+    glm::mat4 *projection;
+
+    Program(GLFWwindow *window, glm::mat4 *View, glm::mat4 *Projection);
+    Program();
     ~Program();
     void loop();
     void cameraControl();
     void printTime();
-    Objects *objs;
 };
